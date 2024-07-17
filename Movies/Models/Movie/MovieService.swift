@@ -11,9 +11,9 @@ struct MovieService {
     
     private let apiBaseURL = "https://www.omdbapi.com/?apikey="
     private let apiToken = "fad9f001"
-    
+    private let apiType = "&type=movie"
     private var apiURL: String {
-        apiBaseURL + apiToken
+        apiBaseURL + apiToken + apiType
     }
     
     private let decoder = JSONDecoder()
