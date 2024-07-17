@@ -281,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ml3-pB-Hk6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-663.35877862595419" y="2259.8591549295775"/>
+            <point key="canvasLocation" x="-1365" y="2277"/>
         </scene>
         <!--Séries-->
         <scene sceneID="Je3-qt-Gwf">
@@ -292,6 +292,9 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="8Vt-iW-hhw" kind="relationship" relationship="rootViewController" id="Y93-no-DmC"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5gX-ug-5Ah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -344,6 +347,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOz-pm-66f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1519" y="1497"/>
+        </scene>
+        <!--Series-->
+        <scene sceneID="TJy-bW-fKk">
+            <objects>
+                <viewController id="8Vt-iW-hhw" customClass="SeriesListViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DoL-hj-DJS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MVW-8i-tn6">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="cGZ-x1-VPE">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wMQ-Ip-DGw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MVW-8i-tn6" firstAttribute="leading" secondItem="wMQ-Ip-DGw" secondAttribute="leading" id="On9-kW-9by"/>
+                            <constraint firstItem="wMQ-Ip-DGw" firstAttribute="trailing" secondItem="MVW-8i-tn6" secondAttribute="trailing" id="QBa-Ky-HNl"/>
+                            <constraint firstItem="wMQ-Ip-DGw" firstAttribute="bottom" secondItem="MVW-8i-tn6" secondAttribute="bottom" id="S4j-tr-YC9"/>
+                            <constraint firstItem="MVW-8i-tn6" firstAttribute="top" secondItem="wMQ-Ip-DGw" secondAttribute="top" id="o7i-mQ-Ljs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Series" id="fJ2-2c-BSL"/>
+                    <connections>
+                        <outlet property="collectionView" destination="MVW-8i-tn6" id="6Hn-DD-RuO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sTo-Sz-nw1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130" y="1484"/>
         </scene>
     </scenes>
     <resources>

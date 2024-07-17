@@ -25,6 +25,7 @@
 		2E2586ED2BB5FA76006EF0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586EB2BB5FA76006EF0BB /* Assets.xcassets */; };
 		CFCE92952C40AC7C009D2C43 /* SerieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCE92942C40AC7C009D2C43 /* SerieService.swift */; };
 		CFCE92992C40ACD9009D2C43 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCE92982C40ACD9009D2C43 /* Serie.swift */; };
+		D8D359E12C474C18007C62F5 /* SeriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D359E02C474C18007C62F5 /* SeriesListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		2E54F4A82BB5F734007B6D93 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCE92942C40AC7C009D2C43 /* SerieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieService.swift; sourceTree = "<group>"; };
 		CFCE92982C40ACD9009D2C43 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
+		D8D359E02C474C18007C62F5 /* SeriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				2E2586E42BB5FA58006EF0BB /* FavoritesViewController.swift */,
 				2E2586E32BB5FA58006EF0BB /* MovieDetailViewController.swift */,
 				2E2586E52BB5FA58006EF0BB /* MovieListViewController.swift */,
+				D8D359E02C474C18007C62F5 /* SeriesListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				2E2586C92BB5F984006EF0BB /* SceneDelegate.swift in Sources */,
 				CFCE92952C40AC7C009D2C43 /* SerieService.swift in Sources */,
 				2E2586E12BB5F9DB006EF0BB /* MovieTableViewCell.swift in Sources */,
+				D8D359E12C474C18007C62F5 /* SeriesListViewController.swift in Sources */,
 				2E2586E82BB5FA58006EF0BB /* MovieListViewController.swift in Sources */,
 				2E2586E62BB5FA58006EF0BB /* MovieDetailViewController.swift in Sources */,
 				2E2586E72BB5FA58006EF0BB /* FavoritesViewController.swift in Sources */,
