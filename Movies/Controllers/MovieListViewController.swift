@@ -10,6 +10,7 @@ import UIKit
 class MovieListViewController: UIViewController {
 
     // Outlets
+    @IBOutlet weak var emptyMoviesNotFound: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     // Services

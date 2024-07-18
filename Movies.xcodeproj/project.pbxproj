@@ -23,6 +23,8 @@
 		2E2586E72BB5FA58006EF0BB /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586E42BB5FA58006EF0BB /* FavoritesViewController.swift */; };
 		2E2586E82BB5FA58006EF0BB /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586E52BB5FA58006EF0BB /* MovieListViewController.swift */; };
 		2E2586ED2BB5FA76006EF0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586EB2BB5FA76006EF0BB /* Assets.xcassets */; };
+		DA6BBD932C47453D00758A91 /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA6BBD922C47453D00758A91 /* EmptyStateView.xib */; };
+		DA6BBD952C47469A00758A91 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BBD942C47469A00758A91 /* EmptyStateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		2E2586EA2BB5FA76006EF0BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E2586EB2BB5FA76006EF0BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E54F4A82BB5F734007B6D93 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA6BBD922C47453D00758A91 /* EmptyStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
+		DA6BBD942C47469A00758A91 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,8 @@
 			children = (
 				2E2586D52BB5F9DB006EF0BB /* LaunchScreen.storyboard */,
 				2E2586D42BB5F9DB006EF0BB /* Main.storyboard */,
+				DA6BBD922C47453D00758A91 /* EmptyStateView.xib */,
+				DA6BBD942C47469A00758A91 /* EmptyStateView.swift */,
 				2E2586D62BB5F9DB006EF0BB /* MovieCollectionViewCell */,
 				2E2586D92BB5F9DB006EF0BB /* MovieTableViewCell */,
 			);
@@ -212,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E2586E02BB5F9DB006EF0BB /* MovieTableViewCell.xib in Resources */,
+				DA6BBD932C47453D00758A91 /* EmptyStateView.xib in Resources */,
 				2E2586DD2BB5F9DB006EF0BB /* LaunchScreen.storyboard in Resources */,
 				2E2586ED2BB5FA76006EF0BB /* Assets.xcassets in Resources */,
 				2E2586DC2BB5F9DB006EF0BB /* Main.storyboard in Resources */,
@@ -232,6 +239,7 @@
 				2E2586D02BB5F9A2006EF0BB /* Movie.swift in Sources */,
 				2E2586DE2BB5F9DB006EF0BB /* MovieCollectionViewCell.swift in Sources */,
 				2E2586C92BB5F984006EF0BB /* SceneDelegate.swift in Sources */,
+				DA6BBD952C47469A00758A91 /* EmptyStateView.swift in Sources */,
 				2E2586E12BB5F9DB006EF0BB /* MovieTableViewCell.swift in Sources */,
 				2E2586E82BB5FA58006EF0BB /* MovieListViewController.swift in Sources */,
 				2E2586E62BB5FA58006EF0BB /* MovieDetailViewController.swift in Sources */,
