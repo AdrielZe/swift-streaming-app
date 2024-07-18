@@ -7,10 +7,16 @@
 
 import Foundation
 
-class SeriesService {
-    static let apiUrl:String = "http://www.omdbapi.com/?apikey=3e2b1ec0&type=series&s="
+class SerieService {
+    private let apiBaseUrl:String = "http://www.omdbapi.com/?apikey=3e2b1ec0&type=series&s="
     //static let url = URL(string:"http://www.omdbapi.com/?apikey=3e2b1ec0&type=series&s=")
-    public static func searchSeries(withTitle title:String, completion: @escaping (Series, Error?) -> Void) {
+    private let apiToken = "fad9f001"
+    
+    private var apiURL: String {
+        apiBaseURL + apiToken
+    }
+    
+    public static func searchSeries(withTitle title:String, completion: @escaping (Serie, Error?) -> Void) {
         let url = URL(string:apiUrl+title)
         guard let openedURL = url else { return }
         
@@ -19,12 +25,58 @@ class SeriesService {
             guard let dataExists = data else { return }
             
             do{
-                let result = try JSONDecoder().decode(Series.self, from: dataExists)
+                let result = try JSONDecoder().decode(Serie.self, from: dataExists)
                 completion(result, nil)
         
             } catch{
                 
             }
         }.resume()
+    }
+    
+    func loadImageData(fromURL link: String, completion: @escaping (Data?) -> Void) {
+        guard let url = URL(string: link) else {
+            completion(nil)
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            completion(data)
+        }
+        
+        task.resume()
+    }
+    
+    func searchSeries(withTitle title: String, completion: @escaping ([Serie]) -> Void) {
+        let query = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let endpoint = apiURL + "&s=\(query)"
+        
+        guard let url = URL(string: endpoint) else {
+            completion([])
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data,
+                    error == nil else {
+                completion([])
+                return
+            }
+            
+            do {
+                let movieResponse = try decoder.decode(MovieSearchResponse.self, from: data)
+                let movies = movieResponse.search
+                completion(movies)
+            } catch {
+                print("FETCH ALL MOVIES ERROR: \(error)")
+                completion([])
+            }
+        }
+        
+        task.resume()
     }
 }

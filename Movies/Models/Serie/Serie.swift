@@ -1,6 +1,6 @@
 import Foundation
 
-struct Series: Decodable, Equatable {
+struct Serie: Decodable, Equatable {
     let id: String
     let title: String
     let released: String?
