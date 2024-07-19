@@ -10,7 +10,7 @@ struct Serie: Decodable, Equatable {
     let plot: String?
     let posterURL: String?
     
-    //var isFavorite: Bool = false
+    var isFavorite: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case id = "imdbID"

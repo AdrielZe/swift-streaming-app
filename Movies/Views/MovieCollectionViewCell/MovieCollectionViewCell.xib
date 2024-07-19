@@ -44,7 +44,7 @@
                 <outlet property="movieImageView" destination="PwR-Y4-adO" id="lzq-hz-kM6"/>
                 <outlet property="movieTitleLabel" destination="aw8-hg-DPy" id="6oz-1j-BXI"/>
             </connections>
-            <point key="canvasLocation" x="211.4503816793893" y="7.042253521126761"/>
+            <point key="canvasLocation" x="210.86956521739131" y="6.6964285714285712"/>
         </collectionViewCell>
     </objects>
     <resources>

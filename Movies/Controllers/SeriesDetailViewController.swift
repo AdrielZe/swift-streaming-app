@@ -17,7 +17,7 @@ class SeriesDetailViewController: UIViewController {
     @IBOutlet weak var serieCountryLabel: UILabel!
     @IBOutlet weak var serieReleasedLabel: UILabel!
     @IBOutlet weak var serieLanguageLabel: UILabel!
-    @IBOutlet weak var mseriePlotLabel: UILabel!
+    @IBOutlet weak var seriePlotLabel: UILabel!
     
     // Services
     var serieService = SerieService()
@@ -31,20 +31,20 @@ class SeriesDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         serieTitleLabel.text = serieTitle
-        loadserieData()
+        loadSerieData()
     }
     
     private func loadSerieData() {
-        guard let serieId = serieId else { return }
+        guard serieId != nil else { return }
         
-        serieService.searchMovie(withId: serieId) { serie in
+        serieService.searchSeries(withTitle: "stranger things") { serie, _ in
             
             self.serie = serie
             
             // Load movie image
-            if let posterURL = movie?.posterURL {
-                self.movieService.loadImageData(fromURL: posterURL) { imageData in
-                    self.updateMovieImage(withImageData: imageData)
+            if let posterURL = serie.posterURL {
+                self.serieService.loadImageData(fromURL: posterURL) { imageData in
+                    self.updateSerieImage(withImageData: imageData)
                 }
             }
             
@@ -55,41 +55,41 @@ class SeriesDetailViewController: UIViewController {
     }
     
     private func updateViewData() {
-        movieGenreLabel.text = movie?.genre
-        movieCountryLabel.text = movie?.country
-        movieLanguageLabel.text = movie?.language
-        movieReleasedLabel.text = movie?.released
-        moviePlotLabel.text = movie?.plot
+        serieGenreLabel.text = serie?.genre
+        serieCountryLabel.text = serie?.country
+        serieLanguageLabel.text = serie?.language
+        serieReleasedLabel.text = serie?.released
+        seriePlotLabel.text = serie?.plot
         updateFavoriteButton()
     }
     
     private func updateFavoriteButton() {
-        guard let movie = movie else { return }
+        guard let serie = serie else { return }
         
-        let isFavorite = favoriteService.isFavorite(movieId: movie.id)
-        self.movie?.isFavorite = isFavorite
+        let isFavorite = favoriteService.isFavorite(id: serie.id, isMovie: false)
+        self.serie?.isFavorite = isFavorite
         let favoriteIcon = isFavorite ? "heart.fill" : "heart"
-        movieFavoriteButton.image = .init(systemName: favoriteIcon)
+        serieFavoriteButton.image = .init(systemName: favoriteIcon)
     }
     
-    private func updateMovieImage(withImageData imageData: Data?) {
+    private func updateSerieImage(withImageData imageData: Data?) {
         guard let imageData = imageData else { return }
         
         DispatchQueue.main.async {
             let movieImage = UIImage(data: imageData)
-            self.movieImageView.image = movieImage
+            self.serieImageView.image = movieImage
         }
     }
     
     @IBAction func didTapFavoriteButton(_ sender: Any) {
-        guard let movie = movie else { return }
+        guard let serie = serie else { return }
         
-        if movie.isFavorite {
+        if serie.isFavorite {
             // Remove movie from favorite list
-            favoriteService.removeMovie(withId: movie.id)
+            favoriteService.removeSerie(withId: serie.id)
         } else {
             // Add movie to favorite list
-            favoriteService.addMovie(movie)
+            favoriteService.addSerie(serie)
         }
         
         updateFavoriteButton()

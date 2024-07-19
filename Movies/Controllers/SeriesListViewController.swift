@@ -16,6 +16,7 @@ class SeriesListViewController: UIViewController {
     var serieService = SerieService()
     
     // Search
+    
     private let searchController = UISearchController()
     private let defaultSearchName = "Steve Jobs"
     private var series: [Serie] = []
@@ -30,7 +31,7 @@ class SeriesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
-        loadSeries(withTitle: <#T##String#>)(withTitle: defaultSearchName)
+        loadSeries(withTitle: defaultSearchName)
     }
     
     private func setupViewController() {
@@ -39,7 +40,7 @@ class SeriesListViewController: UIViewController {
     }
     
     private func loadSeries(withTitle serieTitle: String) {
-        SerieService.searchSeries(withTitle: serieTitle) { series in
+        serieService.searchSeries(withTitle: serieTitle) { series in
             DispatchQueue.main.async {
                 self.series = series
                 self.collectionView.reloadData()
@@ -48,7 +49,7 @@ class SeriesListViewController: UIViewController {
     }
     
     private func setupSearchController() {
-        searchController.searchResultsUpdater = self.Serie
+        searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Pesquisar"
         navigationItem.searchController = searchController
     }
@@ -123,9 +124,9 @@ extension SeriesListViewController: UISearchResultsUpdating {
         let searchText = searchController.searchBar.text ?? ""
         
         if searchText.isEmpty {
-            loadSeries(withTitle: <#T##String#>)(withTitle: defaultSearchName)
+            loadSeries(withTitle: defaultSearchName)
         } else {
-            loadSeries(withTitle: <#T##String#>)(withTitle: searchText)
+            loadSeries(withTitle: searchText)
         }
         
         collectionView.reloadData()

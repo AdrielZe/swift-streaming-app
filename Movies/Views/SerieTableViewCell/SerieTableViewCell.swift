@@ -12,7 +12,7 @@ protocol SerieTableViewCellDelegate: AnyObject {
 
 class SerieTableViewCell: UITableViewCell {
     
-    static let identifier = "serieTableCell"
+    static let identifier = "movieTableCell"
     weak var delegate: SerieTableViewCellDelegate?
     
     // Outlets
