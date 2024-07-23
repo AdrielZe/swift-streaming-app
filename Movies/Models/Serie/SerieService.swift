@@ -1,29 +1,35 @@
-//
-//  SerieService.swift
-//  Movies
-//
-//  Created by ios-noite-2 on 11/07/24.
-//
-
 import Foundation
 
 class SeriesService {
-    static let apiUrl:String = "http://www.omdbapi.com/?apikey=3e2b1ec0&type=series&s="
-    //static let url = URL(string:"http://www.omdbapi.com/?apikey=3e2b1ec0&type=series&s=")
-    public static func searchSeries(withTitle title:String, completion: @escaping (Series, Error?) -> Void) {
-        let url = URL(string:apiUrl+title)
-        guard let openedURL = url else { return }
+    static let apiUrl: String = "https://www.omdbapi.com/?apikey=3e2b1ec0&s="
+    
+    public static func searchSeries(withTitle title: String, completion: @escaping (SearchResult?, Error?) -> Void) {
+        let urlString = apiUrl + title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        guard let url = URL(string: urlString) else {
+            print("URL inválida")
+            return
+        }
         
-        URLSession.shared.dataTask(with: openedURL) { data, response, error in
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Erro na requisição: \(error.localizedDescription)")
+                completion(nil, error)
+                return
+            }
             
-            guard let dataExists = data else { return }
+            guard let data = data else {
+                print("Dados não encontrados")
+                completion(nil, NSError(domain: "Dados não encontrados", code: -1, userInfo: nil))
+                return
+            }
             
-            do{
-                let result = try JSONDecoder().decode(Series.self, from: dataExists)
+            do {
+                let result = try JSONDecoder().decode(SearchResult.self, from: data)
+                print("Decodificação bem-sucedida: \(result)")
                 completion(result, nil)
-        
-            } catch{
-                
+            } catch {
+                print("Erro ao decodificar JSON: \(error.localizedDescription)")
+                completion(nil, error)
             }
         }.resume()
     }

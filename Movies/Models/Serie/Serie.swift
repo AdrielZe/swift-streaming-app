@@ -1,25 +1,30 @@
 import Foundation
 
-struct Series: Decodable, Equatable {
-    let id: String
+// Struct para representar uma série
+struct Series: Decodable{
     let title: String
-    let released: String?
-    let language: String?
-    let country: String?
-    let genre: String?
-    let plot: String?
-    let posterURL: String?
-    
-    //var isFavorite: Bool = false
+    let year: String
+    let imdbID: String
+    let type: String
+    let poster: String
     
     enum CodingKeys: String, CodingKey {
-        case id = "imdbID"
         case title = "Title"
-        case released = "Released"
-        case language = "Language"
-        case country = "Country"
-        case genre = "Genre"
-        case plot = "Plot"
-        case posterURL = "Poster"
+        case year = "Year"
+        case imdbID = "imdbID"
+        case type = "Type"
+        case poster = "Poster"
+    }
+}
+
+struct SearchResult: Decodable {
+    let search: [Series]
+    let totalResults: String
+    let response: String
+    
+    enum CodingKeys: String, CodingKey {
+        case search = "Search"
+        case totalResults
+        case response = "Response"
     }
 }
