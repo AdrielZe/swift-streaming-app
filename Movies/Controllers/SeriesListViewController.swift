@@ -18,7 +18,7 @@ class SeriesListViewController: UIViewController {
     // Search
     
     private let searchController = UISearchController()
-    private let defaultSearchName = "Steve Jobs"
+    private let defaultSearchName = "Simpsons"
     private var series: [Serie] = []
     private let segueIdentifier = "showSerieDetailVC"
     
@@ -55,8 +55,8 @@ class SeriesListViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        let nib = UINib(nibName: "SerieCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: SerieCollectionViewCell.identifier)
+        let nib = UINib(nibName: "CollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -80,13 +80,38 @@ extension SeriesListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SerieCollectionViewCell.identifier, for: indexPath) as? SerieCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        let serie = series[indexPath.row]
-        cell.setup(serie: serie)
         return cell
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SerieCollectionViewCell.identifier, for: indexPath) as? SerieCollectionViewCell else {
+//            return UICollectionViewCell()
+//        }
+//
+//        let serie = series[indexPath.row]
+//        cell.setup(serie: serie)
+//        return cell
+//   }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? CollectionViewCell else { return }
+        
+        let serie = series[indexPath.row]
+        
+        if let posterURL = serie.posterURL {
+            serieService.loadImageData(fromURL: posterURL) { imageData in
+                //self.updateCell(withImageData: imageData, orTitle: movie.title)
+                DispatchQueue.main.async {
+                    if collectionView.indexPathsForVisibleItems.contains(indexPath) {
+                        cell.setup(imageData: imageData, title: serie.title)
+                    }
+                }
+            }
+        }
     }
 }
 

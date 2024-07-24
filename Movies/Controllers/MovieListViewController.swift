@@ -54,8 +54,8 @@ class MovieListViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        let nib = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
+        let nib = UINib(nibName: "CollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -79,13 +79,28 @@ extension MovieListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        let movie = movies[indexPath.row]
-        cell.setup(movie: movie)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? CollectionViewCell else { return }
+        
+        let movie = movies[indexPath.row]
+        
+        if let posterURL = movie.posterURL {
+            movieService.loadImageData(fromURL: posterURL) { imageData in
+                //self.updateCell(withImageData: imageData, orTitle: movie.title)
+                DispatchQueue.main.async {
+                    if collectionView.indexPathsForVisibleItems.contains(indexPath) {
+                        cell.setup(imageData: imageData, title: movie.title)
+                    }
+                }
+            }
+        }
     }
 }
 
