@@ -21,7 +21,7 @@ class SeriesDetailViewController: UIViewController {
     
     // Services
     var serieService = SerieService()
-    var favoriteService = FavoriteService.shared
+    //var favoriteService = FavoriteService.shared
     
     // Data
     var serieId: String?
@@ -35,14 +35,14 @@ class SeriesDetailViewController: UIViewController {
     }
     
     private func loadSerieData() {
-        guard serieId != nil else { return }
+        guard let serieId = serieId else { return }
         
-        serieService.searchSeries(withTitle: "stranger things") { serie, _ in
+        serieService.searchSerie(withId: serieId) { serie in
             
             self.serie = serie
             
-            // Load movie image
-            if let posterURL = serie.posterURL {
+            // Load serie image
+            if let posterURL = serie?.posterURL {
                 self.serieService.loadImageData(fromURL: posterURL) { imageData in
                     self.updateSerieImage(withImageData: imageData)
                 }
@@ -60,38 +60,38 @@ class SeriesDetailViewController: UIViewController {
         serieLanguageLabel.text = serie?.language
         serieReleasedLabel.text = serie?.released
         seriePlotLabel.text = serie?.plot
-        updateFavoriteButton()
+        //updateFavoriteButton()
     }
     
-    private func updateFavoriteButton() {
-        guard let serie = serie else { return }
-        
-        let isFavorite = favoriteService.isFavorite(id: serie.id, isMovie: false)
-        self.serie?.isFavorite = isFavorite
-        let favoriteIcon = isFavorite ? "heart.fill" : "heart"
-        serieFavoriteButton.image = .init(systemName: favoriteIcon)
-    }
+//    private func updateFavoriteButton() {
+//        guard let serie = serie else { return }
+//
+//        let isFavorite = favoriteService.isFavorite(id: serie.id, isSerie: true)
+//        self.serie?.isFavorite = isFavorite
+//        let favoriteIcon = isFavorite ? "heart.fill" : "heart"
+//        serieFavoriteButton.image = .init(systemName: favoriteIcon)
+//    }
     
     private func updateSerieImage(withImageData imageData: Data?) {
         guard let imageData = imageData else { return }
         
         DispatchQueue.main.async {
-            let movieImage = UIImage(data: imageData)
-            self.serieImageView.image = movieImage
+            let serieImage = UIImage(data: imageData)
+            self.serieImageView.image = serieImage
         }
     }
     
-    @IBAction func didTapFavoriteButton(_ sender: Any) {
-        guard let serie = serie else { return }
-        
-        if serie.isFavorite {
-            // Remove movie from favorite list
-            favoriteService.removeSerie(withId: serie.id)
-        } else {
-            // Add movie to favorite list
-            favoriteService.addSerie(serie)
-        }
-        
-        updateFavoriteButton()
-    }
+//    @IBAction func didTapFavoriteButton(_ sender: Any) {
+//        guard let serie = serie else { return }
+//
+//        if serie.isFavorite {
+//            // Remove movie from favorite list
+//            favoriteService.removeSerie(withId: serie.id)
+//        } else {
+//            // Add movie to favorite list
+//            favoriteService.addSerie(serie)
+//        }
+//
+//        updateFavoriteButton()
+//    }
 }

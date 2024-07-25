@@ -7,34 +7,132 @@
 
 import Foundation
 
-class SerieService {
-    private let apiBaseUrl:String = "http://www.omdbapi.com/?apikey=3e2b1ec0&s="
-    //static let url = URL(string:"http://www.omdbapi.com/?apikey=3e2b1ec0&type=series&s=")
+struct SerieService {
+    
+    private let apiBaseURL = "https://www.omdbapi.com/?apikey="
     private let apiToken = "fad9f001"
+    private let filter = "&type=series&"
     
     private var apiURL: String {
-        apiBaseUrl// + apiToken
+        apiBaseURL + apiToken + filter
     }
     
     private let decoder = JSONDecoder()
-    
-    public func searchSeries(withTitle title:String, completion: @escaping (Serie, Error?) -> Void) {
-        let url = URL(string:apiURL+title)
-        guard let openedURL = url else { return }
+
+    func searchSeries(withTitle title: String, completion: @escaping ([Serie]) -> Void) {
+        let query = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let endpoint = apiURL + "&s=\(query)"
         
-        URLSession.shared.dataTask(with: openedURL) { data, response, error in
-            
-            guard let dataExists = data else { return }
-            
-            do{
-                let result = try JSONDecoder().decode(Serie.self, from: dataExists)
-                completion(result, nil)
+        guard let url = URL(string: endpoint) else {
+            completion([])
+            return
+        }
         
-            } catch{
-                
+        let request = URLRequest(url: url)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data,
+                    error == nil else {
+                completion([])
+                return
             }
-        }.resume()
+            
+            do {
+                let serieResponse = try decoder.decode(SerieSearchResponse.self, from: data)
+                let series = serieResponse.search
+                completion(series)
+            } catch {
+                print("FETCH ALL SERIES ERROR: \(error)")
+                completion([])
+            }
+        }
+        
+        task.resume()
     }
+
+    func searchSerie(withId serieId: String, completion: @escaping (Serie?) -> Void) {
+        let query = serieId.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let endpoint = apiURL + "&i=\(query)"
+        
+        guard let url = URL(string: endpoint) else {
+            completion(nil)
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                completion(nil)
+                return
+            }
+            
+            do {
+                let serie = try decoder.decode(Serie.self, from: data)
+                completion(serie)
+            } catch {
+                print("FETCH SERIE ERROR: \(error)")
+                completion(nil)
+            }
+        }
+        
+        task.resume()
+    }
+    
+//    public func searchSeries(withTitle title:String, completion: @escaping (Serie, Error?) -> Void) {
+//        let url = URL(string:apiURL+title)
+//        guard let openedURL = url else { return }
+//
+//        URLSession.shared.dataTask(with: openedURL) { data, response, error in
+//
+//            guard let dataExists = data else { return }
+//
+//            do{
+//                let result = try JSONDecoder().decode(Serie.self, from: dataExists)
+//                completion(result, nil)
+//
+//            } catch{
+//
+//            }
+//        }.resume()
+//    }
+//
+//
+//
+//
+//    func searchSerie(withId serieId: String, completion: @escaping (Serie?) -> Void) {
+//        let query = serieId.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+//        let endpoint = apiURL + "&s=\(query)"
+//
+//        guard let url = URL(string: endpoint) else {
+//            completion(nil)
+//            return
+//        }
+//
+//        let request = URLRequest(url: url)
+//
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//
+//                guard let data = data else {
+//                    completion(nil)
+//                    return
+//            }
+//
+//            do {
+//                let serieResponse = try self.decoder.decode(SerieSearchResponse.self, from: data)
+//                let series = serieResponse.search
+//
+//                let serie = try decoder.decode(Serie.self, from: data)
+//                completion(series)
+//            } catch {
+//                print("FETCH ALL SERIES ERROR: \(error)")
+//                completion([])
+//            }
+//        }
+//
+//        task.resume()
+//    }
+    
     
     func loadImageData(fromURL link: String, completion: @escaping (Data?) -> Void) {
         guard let url = URL(string: link) else {
@@ -48,37 +146,6 @@ class SerieService {
             completion(data)
         }
         
-        task.resume()
-    }
-    
-    func searchSeries(withTitle title: String, completion: @escaping ([Serie]) -> Void) {
-        let query = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let endpoint = apiURL + "&s=\(query)"
-
-        guard let url = URL(string: endpoint) else {
-            completion([])
-            return
-        }
-
-        let request = URLRequest(url: url)
-
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data,
-                    error == nil else {
-                completion([])
-                return
-            }
-
-            do {
-                let serieResponse = try self.decoder.decode(SerieSearchResponse.self, from: data)
-                let series = serieResponse.search
-                completion(series)
-            } catch {
-                print("FETCH ALL SERIES ERROR: \(error)")
-                completion([])
-            }
-        }
-
         task.resume()
     }
 }

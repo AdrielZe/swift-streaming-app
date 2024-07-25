@@ -571,14 +571,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="movieCountryLabel" destination="pS4-YQ-nhT" id="RcZ-q4-3xb"/>
-                        <outlet property="movieFavoriteButton" destination="Ocu-LX-OMF" id="qU4-Yb-MOV"/>
-                        <outlet property="movieGenreLabel" destination="qb4-OC-6ak" id="16V-6i-LGb"/>
-                        <outlet property="movieImageView" destination="7Wc-bY-Bt6" id="ZQD-nx-wBt"/>
-                        <outlet property="movieLanguageLabel" destination="y1T-x8-CAT" id="Lto-lD-LpV"/>
-                        <outlet property="moviePlotLabel" destination="fcl-hy-1hq" id="nDg-WS-LyW"/>
-                        <outlet property="movieReleasedLabel" destination="bmk-Jq-pdE" id="OVo-dn-0d6"/>
-                        <outlet property="movieTitleLabel" destination="pkk-BT-Z5N" id="xve-KD-A2j"/>
+                        <outlet property="serieCountryLabel" destination="pS4-YQ-nhT" id="AJf-vu-K4U"/>
+                        <outlet property="serieFavoriteButton" destination="Ocu-LX-OMF" id="KLa-EJ-NCp"/>
+                        <outlet property="serieGenreLabel" destination="qb4-OC-6ak" id="jHv-xu-Jcd"/>
+                        <outlet property="serieImageView" destination="7Wc-bY-Bt6" id="Pss-2k-Qy0"/>
+                        <outlet property="serieLanguageLabel" destination="y1T-x8-CAT" id="rMz-rn-Edp"/>
+                        <outlet property="seriePlotLabel" destination="fcl-hy-1hq" id="Yje-CI-BZ9"/>
+                        <outlet property="serieReleasedLabel" destination="bmk-Jq-pdE" id="SZp-7R-6Ts"/>
+                        <outlet property="serieTitleLabel" destination="pkk-BT-Z5N" id="gme-UY-6Da"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uoZ-kV-UFv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
