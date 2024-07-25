@@ -38,7 +38,7 @@ class EmptyStateView: UIView {
         
     func configureImageAndText(image : UIImage, text : String){
         label.text = text
-        image.image = image
+        //image.image = image
     }
 
 }
