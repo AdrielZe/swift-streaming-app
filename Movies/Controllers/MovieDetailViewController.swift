@@ -66,7 +66,7 @@ class MovieDetailViewController: UIViewController {
     private func updateFavoriteButton() {
         guard let movie = movie else { return }
         
-        let isFavorite = favoriteService.isFavorite(movieId: movie.id)
+        let isFavorite = favoriteService.isFavorite(id: movie.id, isMovie : true)
         self.movie?.isFavorite = isFavorite
         let favoriteIcon = isFavorite ? "heart.fill" : "heart"
         movieFavoriteButton.image = .init(systemName: favoriteIcon)
