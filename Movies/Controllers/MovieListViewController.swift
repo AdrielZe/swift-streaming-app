@@ -17,7 +17,7 @@ class MovieListViewController: UIViewController {
     
     // Search
     private let searchController = UISearchController()
-    private let defaultSearchName = "Steve Jobs"
+    private let defaultSearchName = "Harry Potter"
     private var movies: [Movie] = []
     private let segueIdentifier = "showMovieDetailVC"
     
