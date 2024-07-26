@@ -15,7 +15,6 @@
 		2E2586D22BB5F9A2006EF0BB /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586CE2BB5F9A2006EF0BB /* MovieService.swift */; };
 		2E2586DC2BB5F9DB006EF0BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586D42BB5F9DB006EF0BB /* Main.storyboard */; };
 		2E2586DD2BB5F9DB006EF0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586D52BB5F9DB006EF0BB /* LaunchScreen.storyboard */; };
-		2E2586DE2BB5F9DB006EF0BB /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586D72BB5F9DB006EF0BB /* CollectionViewCell.swift */; };
 		2E2586E02BB5F9DB006EF0BB /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586DA2BB5F9DB006EF0BB /* MovieTableViewCell.xib */; };
 		2E2586E12BB5F9DB006EF0BB /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586DB2BB5F9DB006EF0BB /* MovieTableViewCell.swift */; };
 		2E2586E62BB5FA58006EF0BB /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586E32BB5FA58006EF0BB /* MovieDetailViewController.swift */; };
@@ -33,6 +32,9 @@
 		D88AA3392C49F14D00AA8CF6 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88AA3382C49F14D00AA8CF6 /* View.xib */; };
 		D8A7077D2C50770A0082A884 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586D82BB5F9DB006EF0BB /* CollectionViewCell.xib */; };
 		D8D359E12C474C18007C62F5 /* SeriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D359E02C474C18007C62F5 /* SeriesListViewController.swift */; };
+		DA6BBD972C49E52F00758A91 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BBD962C49E52F00758A91 /* EmptyStateView.swift */; };
+		DA6BBD9A2C49E5D400758A91 /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA6BBD992C49E5D400758A91 /* EmptyStateView.xib */; };
+		DA84496D2C53207C00FF2CF4 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586D72BB5F9DB006EF0BB /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		D88AA3362C49E23E00AA8CF6 /* SerieTableViewCell.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SerieTableViewCell.storyboard; sourceTree = "<group>"; };
 		D88AA3382C49F14D00AA8CF6 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		D8D359E02C474C18007C62F5 /* SeriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListViewController.swift; sourceTree = "<group>"; };
+		DA6BBD962C49E52F00758A91 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		DA6BBD992C49E5D400758A91 /* EmptyStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 			children = (
 				2E2586D52BB5F9DB006EF0BB /* LaunchScreen.storyboard */,
 				2E2586D42BB5F9DB006EF0BB /* Main.storyboard */,
+				DA6BBD982C49E56800758A91 /* EmptyStateView */,
 				2E2586D62BB5F9DB006EF0BB /* CollectionViewCell */,
 				2E2586D92BB5F9DB006EF0BB /* MovieTableViewCell */,
 				D83B1F842C489941006A9616 /* SerieCollectionViewCell */,
@@ -215,6 +220,15 @@
 			path = SerieTableViewCell;
 			sourceTree = "<group>";
 		};
+		DA6BBD982C49E56800758A91 /* EmptyStateView */ = {
+			isa = PBXGroup;
+			children = (
+				DA6BBD962C49E52F00758A91 /* EmptyStateView.swift */,
+				DA6BBD992C49E5D400758A91 /* EmptyStateView.xib */,
+			);
+			path = EmptyStateView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -273,6 +287,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA6BBD9A2C49E5D400758A91 /* EmptyStateView.xib in Resources */,
 				D8A7077D2C50770A0082A884 /* CollectionViewCell.xib in Resources */,
 				D88AA3372C49E23E00AA8CF6 /* SerieTableViewCell.storyboard in Resources */,
 				2E2586E02BB5F9DB006EF0BB /* MovieTableViewCell.xib in Resources */,
@@ -296,11 +311,12 @@
 				2E2586C82BB5F984006EF0BB /* AppDelegate.swift in Sources */,
 				2E2586D02BB5F9A2006EF0BB /* Movie.swift in Sources */,
 				CFCE92992C40ACD9009D2C43 /* Serie.swift in Sources */,
-				2E2586DE2BB5F9DB006EF0BB /* CollectionViewCell.swift in Sources */,
 				2E2586C92BB5F984006EF0BB /* SceneDelegate.swift in Sources */,
+				DA6BBD972C49E52F00758A91 /* EmptyStateView.swift in Sources */,
 				D83B1F862C489962006A9616 /* SerieCollectionViewCell.swift in Sources */,
 				D83B1F812C48978B006A9616 /* SerieSearchResponse.swift in Sources */,
 				CFCE92952C40AC7C009D2C43 /* SerieService.swift in Sources */,
+				DA84496D2C53207C00FF2CF4 /* CollectionViewCell.swift in Sources */,
 				2E2586E12BB5F9DB006EF0BB /* MovieTableViewCell.swift in Sources */,
 				D8D359E12C474C18007C62F5 /* SeriesListViewController.swift in Sources */,
 				2E2586E82BB5FA58006EF0BB /* MovieListViewController.swift in Sources */,

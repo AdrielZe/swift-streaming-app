@@ -71,7 +71,9 @@
                         <constraints>
                             <constraint firstItem="mjE-aC-PSF" firstAttribute="trailing" secondItem="If5-H7-qSN" secondAttribute="trailing" id="4dd-AU-TKy"/>
                             <constraint firstItem="mjE-aC-PSF" firstAttribute="bottom" secondItem="If5-H7-qSN" secondAttribute="bottom" id="6dI-ww-7YV"/>
+                            <constraint firstItem="If5-H7-qSN" firstAttribute="leading" secondItem="mjE-aC-PSF" secondAttribute="leading" id="FI7-Zk-v9R"/>
                             <constraint firstItem="If5-H7-qSN" firstAttribute="top" secondItem="mjE-aC-PSF" secondAttribute="top" id="VHL-ea-YvY"/>
+                            <constraint firstAttribute="trailing" secondItem="If5-H7-qSN" secondAttribute="trailing" id="aNs-C5-mOx"/>
                             <constraint firstItem="If5-H7-qSN" firstAttribute="leading" secondItem="mjE-aC-PSF" secondAttribute="leading" id="zJZ-zn-a8g"/>
                         </constraints>
                     </view>
