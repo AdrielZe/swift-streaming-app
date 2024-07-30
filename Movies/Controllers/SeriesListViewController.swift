@@ -11,9 +11,12 @@ class SeriesListViewController: UIViewController {
 
     // Outlets
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    @IBOutlet weak var orderButton: UIBarButtonItem!
     // Services
     var serieService = SerieService()
+    @IBAction func onTapButton(_ sender: Any) {
+        
+    }
     
     // Search
     

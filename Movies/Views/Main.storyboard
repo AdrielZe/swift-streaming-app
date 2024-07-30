@@ -379,9 +379,22 @@
                             <constraint firstItem="MVW-8i-tn6" firstAttribute="top" secondItem="wMQ-Ip-DGw" secondAttribute="top" id="o7i-mQ-Ljs"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Series" id="fJ2-2c-BSL"/>
+                    <navigationItem key="navigationItem" title="Series" id="fJ2-2c-BSL">
+                        <barButtonItem key="rightBarButtonItem" title="A - Z" style="plain" id="2eK-lt-TnQ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="aSC-P2-dkq">
+                                <rect key="frame" x="319" y="5" width="75" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="A - Z"/>
+                            </button>
+                            <connections>
+                                <action selector="onTapButton:" destination="8Vt-iW-hhw" id="y47-Zc-F9v"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="MVW-8i-tn6" id="tTH-Xz-9cQ"/>
+                        <outlet property="orderButton" destination="2eK-lt-TnQ" id="Cif-pG-036"/>
                         <segue destination="Vcq-Vj-J3B" kind="show" identifier="showSerieDetailVC" id="mtt-11-LLb"/>
                     </connections>
                 </viewController>
