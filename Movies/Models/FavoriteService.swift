@@ -21,10 +21,23 @@ class FavoriteService {
         favoriteMovies
     }
     
+
     func isFavorite(id: String, isMovie: Bool) -> Bool {
         if isMovie {
             return favoriteMovies.contains { movie in
                 movie.id == id
+            }
+        } else {
+            return favoriteSeries.contains { serie in
+                serie.id == id
+            }
+        }
+    }
+    
+    func isFavorite(id: String, isSerie: Bool) -> Bool {
+        if isSerie {
+            return favoriteSeries.contains { serie in
+                serie.id == id
             }
         } else {
             return favoriteSeries.contains { serie in
